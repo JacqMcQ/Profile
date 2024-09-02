@@ -15,22 +15,24 @@ const hbs = exphbs.create({
 app.engine("handlebars", hbs.engine);
 app.set("view engine", "handlebars");
 
-// Static files (CSS, JS, etc.)
+// Serve static files (like CSS, client-side JS)
 app.use(express.static(path.join(__dirname, "public")));
 
-// Define routes
+// Home Route
 app.get("/", (req, res) => {
   res.render("home", { title: "Home" });
 });
 
+// My Work Route
 app.get("/my-work", (req, res) => {
   res.render("my-work", { title: "My Work" });
 });
 
+// Up and Coming Route
 app.get("/up-and-coming", (req, res) => {
   res.render("up-and-coming", { title: "Up and Coming" });
 });
 
 // Start the server
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
